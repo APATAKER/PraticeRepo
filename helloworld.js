@@ -52,5 +52,5 @@ http.createServer(function (req, res) {
   console.log(qa.pathname);
   console.log(qa.search);
   console.log(qdata.month);
-  res.end(txt);
+  res.end();
 }).listen(8081);
