@@ -3,10 +3,18 @@ var dt = require('./dateMod');
 var url = require('url');
 var fs = require('fs');
 var uc = require('upper-case');
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
 var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
 var qa = url.parse(adr, true);
 var qdata = qa.query;
 
+var myEventHandler = function () {
+  console.log('I hear a scream!');
+}
+
+eventEmitter.on('scream', myEventHandler);
+eventEmitter.emit('scream');
 http.createServer(function (req, res) {
   //fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
   //if (err) throw err;
