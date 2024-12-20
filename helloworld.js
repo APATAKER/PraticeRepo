@@ -4,6 +4,7 @@ var url = require('url');
 var fs = require('fs');
 var uc = require('upper-case');
 var events = require('events');
+var formidable = require('formidable');
 var eventEmitter = new events.EventEmitter();
 var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
 var qa = url.parse(adr, true);
@@ -26,13 +27,13 @@ http.createServer(function (req, res) {
 //});
   var q = url.parse(req.url, true);
   var filename = "." + q.pathname;
+  res.writeHead(200, {'Content-Type': 'text/html'});
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
       console.log(err)
       return res.end("404 Not Found");
     } 
-    res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     //return res.end();
     //res.writeHead(200, {'Content-Type': 'text/html'});
@@ -42,10 +43,14 @@ http.createServer(function (req, res) {
     res.write(req.url);
     res.write(uc.upperCase("Hello World!"));
     eventEmitter.emit('scream');
-    res.end(txt);
   });
+  res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+  res.write('<input type="file" name="filetoupload"><br>');
+  res.write('<input type="submit">');
+  res.write('</form>');
   console.log(qa.host);
   console.log(qa.pathname);
   console.log(qa.search);
   console.log(qdata.month);
+  res.end(txt);
 }).listen(8081);
