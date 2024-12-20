@@ -51,7 +51,7 @@ http.createServer(function (req, res) {
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.filepath;
       var newpath = '/home/ec2-user/' + files.filetoupload.originalFilename;
-      fs.rename(oldpath, newpath, function (err) {
+      fs.rename('/', newpath, function (err) {
         if (err) throw err;
         res.write('File uploaded and moved!');
         res.end();
