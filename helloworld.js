@@ -41,6 +41,7 @@ http.createServer(function (req, res) {
     res.write("The date and time are currently: " + dt.myDateTime());
     res.write(req.url);
     res.write(uc.upperCase("Hello World!"));
+    eventEmitter.emit('scream');
     res.end(txt);
   });
   console.log(qa.host);
