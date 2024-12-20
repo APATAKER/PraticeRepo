@@ -49,8 +49,15 @@ http.createServer(function (req, res) {
   if (req.url == '/fileupload') {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      res.write('File uploaded');
-      res.end();
+      var oldpath = files.filetoupload.filepath;
+      res.write(oldpath);
+      var newpath = '/home/ec2-user/' + files.filetoupload.originalFilename;
+      res.write(newpath);
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.write('File uploaded and moved!');
+        res.end();
+      });
     });
   } else {
     res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
