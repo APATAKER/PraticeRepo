@@ -43,6 +43,7 @@ http.createServer(function (req, res) {
     res.write(req.url);
     res.write(uc.upperCase("Hello World!"));
     eventEmitter.emit('scream');
+    res.end();
   });
   res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
   res.write('<input type="file" name="filetoupload"><br>');
@@ -52,5 +53,4 @@ http.createServer(function (req, res) {
   console.log(qa.pathname);
   console.log(qa.search);
   console.log(qdata.month);
-  res.end();
 }).listen(8081);
