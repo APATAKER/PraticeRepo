@@ -8,6 +8,10 @@ http.createServer(function (req, res) {
   if (err) throw err;
   console.log('Saved!');
 });
+  fs.unlink('mynewfile1.txt', function (err) {
+  if (err) throw err;
+  console.log('File deleted!');
+});
   fs.readFile('index.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
