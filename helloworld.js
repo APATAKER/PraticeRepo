@@ -2,6 +2,7 @@ var http = require('http');
 var dt = require('./dateMod');
 var url = require('url');
 var fs = require('fs');
+var uc = require('upper-case');
 var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
 var qa = url.parse(adr, true);
 var qdata = qa.query;
@@ -31,6 +32,7 @@ http.createServer(function (req, res) {
     var txt = q.year + " " + q.month;
     res.write("The date and time are currently: " + dt.myDateTime());
     res.write(req.url);
+    res.write(uc.upperCase("Hello World!"));
     res.end(txt);
   });
   console.log(qa.host);
