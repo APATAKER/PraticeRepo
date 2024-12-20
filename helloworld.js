@@ -25,26 +25,26 @@ http.createServer(function (req, res) {
   //if (err) throw err;
   //console.log('File deleted!');
 //});
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
+  //var q = url.parse(req.url, true);
+  //var filename = "." + q.pathname;
   res.writeHead(200, {'Content-Type': 'text/html'});
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      console.log(err)
-      return res.end("404 Not Found");
-    } 
-    res.write(data);
+  //fs.readFile(filename, function(err, data) {
+    //if (err) {
+      //res.writeHead(404, {'Content-Type': 'text/html'});
+      //console.log(err)
+      //return res.end("404 Not Found");
+    //} 
+    //res.write(data);
     //return res.end();
     //res.writeHead(200, {'Content-Type': 'text/html'});
     //var q = url.parse(req.url, true).query;
-    var txt = q.year + " " + q.month;
-    res.write("The date and time are currently: " + dt.myDateTime());
-    res.write(req.url);
-    res.write(uc.upperCase("Hello World!"));
-    eventEmitter.emit('scream');
-    res.end();
-  });
+    //var txt = q.year + " " + q.month;
+    //res.write("The date and time are currently: " + dt.myDateTime());
+    //res.write(req.url);
+    //res.write(uc.upperCase("Hello World!"));
+    //eventEmitter.emit('scream');
+    //res.end();
+  //});
   
   if (req.url == '/fileupload') {
     var form = new formidable.IncomingForm();
