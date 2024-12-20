@@ -50,9 +50,9 @@ http.createServer(function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.filepath;
-      res.write(oldpath);
+      console.log(oldpath);
       var newpath = '/home/ec2-user/' + files.filetoupload.originalFilename;
-      res.write(newpath);
+      console.log(newpath);
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File uploaded and moved!');
