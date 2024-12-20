@@ -11,10 +11,10 @@ http.createServer(function (req, res) {
   //if (err) throw err;
   //console.log('Saved!');
 //});
-  fs.unlink('mynewfile1.txt', function (err) {
-  if (err) throw err;
-  console.log('File deleted!');
-});
+  //fs.unlink('mynewfile1.txt', function (err) {
+  //if (err) throw err;
+  //console.log('File deleted!');
+//});
   var q = url.parse(req.url, true).query;
   var filename = "." + q.pathname;
   fs.readFile(filename, function(err, data) {
